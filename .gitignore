@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Production builds
+client/dist/
+
+# SQLite databases & runtime storage (generated at runtime)
+server/data/*.sqlite*
+server/data/*.db*
+server/data/*.sqlite-wal
+server/data/*.sqlite-shm
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Environment variables
+.env
+.env.local
+server/.env
+client/.env
+
+# Logs & temp
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+.DS_Store
+Thumbs.db

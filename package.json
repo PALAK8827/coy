@@ -1,0 +1,16 @@
+{
+  "name": "coy-app",
+  "version": "1.0.0",
+  "description": "Coy SDE Internship Assignment - Full Stack Swiping & Matching Web Application",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently -k -n \"server,client\" -c \"cyan,magenta\" \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client",
+    "test": "npm run test --prefix server",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
