@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const swipeRoutes = require('./routes/swipeRoutes');
-
+const path = require('path'); 
 const app = express();
 
 // Middlewares
@@ -25,7 +25,15 @@ app.use('/api', swipeRoutes);
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok', uptime: process.uptime() });
 });
+const clientDistPath = path.join(__dirname, '../../client/dist');
+app.use(express.static(clientDistPath));  
 
+app.get('*',(req,res,next)=>{
+  if(req.path.startsWith('/api') || req.path === '/health'){
+    return next();
+  }
+  res.sendFile(path.join(clientDistPath,'index.html'));
+});
 // 404 Handler
 app.use((req, res) => {
   res.status(404).json({
